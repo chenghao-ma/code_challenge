@@ -6,6 +6,7 @@ from bs4 import BeautifulSoup
 import re
 from collections import defaultdict
 import json
+import os
 
 def clear_html_re(src_html):
     content = re.sub(r"</?(.+?)>", "", src_html)
@@ -72,6 +73,7 @@ def find_information(content,information):
 	return information
 
 def main():
+	os.chmod('./chromedriver',0o755)
 	diver=webdriver.Chrome('./chromedriver')
 	diver.get('https://www.linkedin.com/login')
 	# waiting for loading the website
